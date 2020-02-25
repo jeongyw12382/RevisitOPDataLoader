@@ -1,5 +1,5 @@
 {
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
-    "python.pythonPath": "/home/yoonwoo/anaconda3/envs/env/bin/python"
+    "python.pythonPath": "C:\\Users\\jeongyw12382\\AppData\\Local\\Continuum\\anaconda3\\envs\\CV\\python.exe"
 }

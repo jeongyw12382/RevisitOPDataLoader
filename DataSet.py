@@ -106,9 +106,13 @@ class QuerySet(Dataset):
         self.pos = np.array([np.concatenate([self.easy[i], self.hard[i]]) for i in range(self.nQ)])
         self.pair = np.array([(x, y) for x in range(self.nQ) for y in self.pos[x]], dtype=(int,int))
         
-        outlier = np.array([np.setdiff1d(np.arange(self.nDB), self.pos[i]) for i in range(self.nQ)])
-        outlier = np.array([np.setdiff1d(outlier[i], self.junk[i]) for i in range(self.nQ)])
-        self.neg = np.array([np.random.choice(mat, 5) for mat in outlier], dtype=int)
+        self.neg = []
+
+        for idx, pos_list in enumerate(self.pos):
+
+            self.neg.append([])
+            self.neg[idx] = [i for i in range(self.nDB) if i not in pos_list]
+        
         # for i in range(len(self.junk)):
         #     if len(self.junk[i]) < 5:
         #         l = len(self.junk[i])
